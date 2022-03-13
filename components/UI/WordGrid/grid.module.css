@@ -1,0 +1,20 @@
+.container{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.tiles{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+
+.tile{
+    border: 2px solid var(--color-black);
+    width: var(--tile-size);
+    height: var(--tile-size);
+}
