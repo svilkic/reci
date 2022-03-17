@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Icons
 import {FiDelete} from 'react-icons/fi'
 import {AiOutlineEnter} from 'react-icons/ai'
@@ -6,19 +6,51 @@ import {AiOutlineEnter} from 'react-icons/ai'
 import styles from "./keyboard.module.css";
 
 export function Keyboard() {
+
+  const [playing,setPlaying] = useState(true);
+
+  const onClickHandler = (e) => {
+    if(e.target.matches('[data-key]')){
+      console.log(e.target.dataset.key)
+    }
+    if(e.target.matches('[data-delete]')){
+      console.log("Remove character")
+    }
+    if(e.target.matches('[data-enter]')){
+      console.log("Submit word")
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('keypress', e => {
+      keyPressHandler(e)
+    });
+  }, []);
+
+  const keyPressHandler = (e) => {
+    const {key} = e;
+    if(key === "Enter"){
+
+    }
+    else if(key === "Backspace" || key === "Delete"){
+    }
+    else if (key.match(/^[a-z]$/)){
+    }
+  }
+
   return (
     <div className={styles.container}>
-      <div className={styles.row}>
-        <button className={`${styles.key} ${styles.wrong}`} data-key='Q'> Q </button>
-        <button className={`${styles.key} ${styles.wrongLocation}`} data-key='W'> W </button>
-        <button className={`${styles.key} ${styles.correct}`} data-key='E'> E </button>
-        <button className={styles.key} data-key='R'> R </button>
-        <button className={styles.key} data-key='T'> T </button>
-        <button className={styles.key} data-key='Y'> Y </button>
-        <button className={styles.key} data-key='U'> U </button>
-        <button className={styles.key} data-key='I'> I </button>
-        <button className={styles.key} data-key='O'> O </button>
-        <button className={styles.key} data-key='P'> P </button>
+      <div className={styles.row} onKeyDown={keyPressHandler}>
+        <button className={`${styles.key}`} data-key='Q' onClick={onClickHandler}> Q </button>
+        <button className={`${styles.key} `} data-key='W' onClick={onClickHandler}> W </button>
+        <button className={`${styles.key} `} data-key='E' onClick={onClickHandler}> E </button>
+        <button className={styles.key} data-key='R' onClick={onClickHandler}> R </button>
+        <button className={styles.key} data-key='T' onClick={onClickHandler}> T </button>
+        <button className={styles.key} data-key='Y' onClick={onClickHandler}> Y </button>
+        <button className={styles.key} data-key='U' onClick={onClickHandler}> U </button>
+        <button className={styles.key} data-key='I' onClick={onClickHandler}> I </button>
+        <button className={styles.key} data-key='O' onClick={onClickHandler}> O </button>
+        <button className={styles.key} data-key='P' onClick={onClickHandler}> P </button>
       </div>
       <div className={styles.row}>
         <button className={styles.key} data-key='A'> A </button>
@@ -30,7 +62,7 @@ export function Keyboard() {
         <button className={styles.key} data-key='J'> J </button>
         <button className={styles.key} data-key='K'> K </button>
         <button className={styles.key} data-key='L'> L </button>
-        <button className={`${styles.key} ${styles.outline}`} data-key='<' title="enter"> <FiDelete size="1.2em"/></button>
+        <button className={`${styles.key} ${styles.outline}`} data-key='delete' title="delete"> <FiDelete size="1.2em"/></button>
       </div>
       <div className={styles.row}>
         <button className={styles.key} data-key='Z'> Z </button>

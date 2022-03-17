@@ -23,13 +23,15 @@ a {
   --color-white: #f0f0f0;
   --color-white-hover: #d6d6d6;
 
+  --border-color: rgb(92, 92, 92);
+
   --color-primary: #549dbe;
 
   --color-wrong: #727272;
   --color-wrong-location: #c9bb00;
   --color-correct: #00aa00;
 
-  --tile-size: 3em;
+  --tile-size: 3.5em;
   --key-size: 3em;
   --border-radius: 5px;
 }
@@ -39,5 +41,4 @@ a {
   --color-black-hover: #d6d6d6;
   --color-white: #111;
   --color-white-hover: rgb(34, 29, 29);
-
 }
